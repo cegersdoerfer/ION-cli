@@ -42,7 +42,8 @@ ion-cli --upload path/to/your/trace.txt
 
 ```bash
 ion-cli --list
-                  
+```
+```txt               
 ╭─────────────────────────────────╮
 │ ION-cli - The I/O Navigator CLI │
 ╰─────────────────────────────────╯
@@ -62,7 +63,8 @@ User verified: test@example.com
 
 ```bash
 ion-cli --analyze trace_name --llm anthropic/claude-3-7-sonnet-20250219
-
+```
+```txt
 ⠋ Launching analysis...
 ╭─────────────────────────────────────────────────────────── Analysis Launched ───────────────────────────────────────────────────────────╮
 │ Analysis task submitted successfully!                                                                                                   │
@@ -91,6 +93,8 @@ Once an analysis is complete, you can view the diagnosis:
 
 ```bash
 ion-cli --view trace_name
+```
+```txt
 
 ⠴ Fetching diagnosis...
 ╭─────────────────────────────────────────────────────── Diagnosis for valid_trace ───────────────────────────────────────────────────────╮
