@@ -86,6 +86,27 @@ ion-cli --delete trace_name
 | `--delete`, `-d` | Delete a trace and its associated files |
 | `--llm`, `-m` | Specify the LLM model to use for analysis |
 
+## Examples
+
+```bash
+export ION_USER_EMAIL=test@example.com 
+ion-cli --list
+```                    
+╭────────────────────────────────────────────────╮
+│ ION-upload - Upload trace files to ION web app │
+╰────────────────────────────────────────────────╯
+Using user email from environment: test@example.com
+⠼ Verifying user...
+User verified: test@example.com
+⠦ Fetching your traces...
+                               Your Uploaded Traces                               
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ Trace Name  ┃ Description         ┃ Upload Date         ┃ Status      ┃ Model  ┃
+┡━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━┩
+│ valid_trace │ User uploaded trace │ 2025-03-02 12:51:44 │ Not Started │ gpt-4o │
+└─────────────┴─────────────────────┴─────────────────────┴─────────────┴────────┘
+
+
 ## Troubleshooting
 
 If you encounter issues:
