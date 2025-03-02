@@ -91,7 +91,7 @@ ion-cli --delete trace_name
 ```bash
 export ION_USER_EMAIL=test@example.com 
 ion-cli --list
-```                    
+                  
 ╭────────────────────────────────────────────────╮
 │ ION-upload - Upload trace files to ION web app │
 ╰────────────────────────────────────────────────╯
@@ -105,7 +105,7 @@ User verified: test@example.com
 ┡━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━┩
 │ valid_trace │ User uploaded trace │ 2025-03-02 12:51:44 │ Not Started │ gpt-4o │
 └─────────────┴─────────────────────┴─────────────────────┴─────────────┴────────┘
-
+```
 
 ## Troubleshooting
 
