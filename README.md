@@ -4,8 +4,7 @@ A command-line utility for interacting with the ION web application. This tool a
 
 ## Installation
 
-```
-bash
+```bash
 pip install ion-cli
 ```
 
@@ -23,8 +22,7 @@ pip install ion-cli
 ### Authentication
 
 Before using the CLI, you need to authenticate with 
-```
-bash
+```bash
 ion-cli --user_email your.email@example.com
 ```
 
@@ -32,22 +30,19 @@ You can also set the `ION_USER_EMAIL` environment variable to avoid specifying y
 
 ### Uploading a Trace
 
-```
-bash
+```bash
 ion-cli --upload path/to/your/trace.txt
 ```
 
 ### Listing Your Traces
 
-```
-bash
+```bash
 ion-cli --list
 ```
 
 ### Launching an Analysis
 
-```
-bash
+```bash
 ion-cli --analyze trace_name --llm anthropic/claude-3-7-sonnet-20250219
 ```
 
@@ -60,8 +55,7 @@ Available models:
 
 ### Stopping an Analysis
 
-```
-bash
+```bash
 ion-cli --stop trace_name
 ```
 
@@ -69,15 +63,13 @@ ion-cli --stop trace_name
 
 Once an analysis is complete, you can view the diagnosis:
 
-```
-bash
+```bash
 ion-cli --view trace_name
 ```
 
 ### Deleting a Trace
 
-```
-bash
+```bash
 ion-cli --delete trace_name
 ```
 
