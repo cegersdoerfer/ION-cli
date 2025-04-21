@@ -34,8 +34,10 @@ export ION_USER_EMAIL=test@example.com
 
 ### Uploading a Trace
 
+Upload trace files in txt (output of `darshan-parser`) or Darshan log format.
+
 ```bash
-ion-cli --upload path/to/your/trace.txt
+ion-cli --upload path/to/your/trace.[txt, darshan]
 ```
 
 ### List Uploaded Traces
