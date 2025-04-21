@@ -118,7 +118,7 @@ def upload_file(file_path: str, user_id: str) -> bool:
             ) as progress:
                 task = progress.add_task("[info]Uploading file...[/]", total=None)
                 response = requests.post(
-                    f"{DEFAULT_API_ENDPOINT}/upload_trace", 
+                    f"{DEFAULT_API_ENDPOINT}/api/upload_trace", 
                     files=files,
                     data=form_data
                 )
@@ -167,7 +167,7 @@ def list_user_traces(user_id: str) -> bool:
             console=console
         ) as progress:
             task = progress.add_task("[info]Fetching your traces...[/]", total=None)
-            response = requests.post(f"{DEFAULT_API_ENDPOINT}/user_traces", json=payload)
+            response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/user_traces", json=payload)
             progress.update(task, completed=True)
         
         if response.status_code == 200:
@@ -255,7 +255,7 @@ def check_user_verified(user_email: str = None) -> str:
         console=console
     ) as progress:
         task = progress.add_task("[info]Verifying user...[/]", total=None)
-        response = requests.post(f"{DEFAULT_API_ENDPOINT}/user", json=request_body)
+        response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/user", json=request_body)
         progress.update(task, completed=True)
     
     result = response.json()
@@ -284,7 +284,7 @@ def get_trace_status(trace_name: str, user_id: str) -> str:
     payload = {
         "user_id": user_id
     }
-    response = requests.post(f"{DEFAULT_API_ENDPOINT}/user_traces", json=payload)
+    response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/user_traces", json=payload)
     traces = response.json()
     for trace in traces:
         if trace["trace_name"] == trace_name:
@@ -348,7 +348,7 @@ def launch_analysis(trace_id: str, user_id: str, llm: str) -> bool:
             console=console
         ) as progress:
             task = progress.add_task("[info]Launching analysis...[/]", total=None)
-            response = requests.post(f"{DEFAULT_API_ENDPOINT}/run_analysis", json=payload)
+            response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/run_analysis", json=payload)
             progress.update(task, completed=True)
         
         if response.status_code == 202:
@@ -415,7 +415,7 @@ def view_trace_diagnosis(trace_name: str, user_id: str) -> bool:
             console=console
         ) as progress:
             task = progress.add_task("[info]Fetching diagnosis...[/]", total=None)
-            response = requests.post(f"{DEFAULT_API_ENDPOINT}/trace_examples/{trace_name}/final_diagnosis", json=payload)
+            response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/trace_examples/{trace_name}/final_diagnosis", json=payload)
             progress.update(task, completed=True)
         
         if response.status_code == 200:
@@ -506,7 +506,7 @@ def stop_analysis(trace_name: str, user_id: str) -> bool:
             console=console
         ) as progress:
             task = progress.add_task("[info]Stopping analysis...[/]", total=None)
-            response = requests.post(f"{DEFAULT_API_ENDPOINT}/stop_analysis", json=payload)
+            response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/stop_analysis", json=payload)
             progress.update(task, completed=True)
         
         if response.status_code == 200:
@@ -583,7 +583,7 @@ def delete_trace(trace_name: str, user_id: str) -> bool:
             console=console
         ) as progress:
             task = progress.add_task("[info]Deleting trace...[/]", total=None)
-            response = requests.post(f"{DEFAULT_API_ENDPOINT}/delete_trace", json=payload)
+            response = requests.post(f"{DEFAULT_API_ENDPOINT}/api/delete_trace", json=payload)
             progress.update(task, completed=True)
         
         if response.status_code == 200:
@@ -622,12 +622,12 @@ def main(args: Optional[list] = None) -> int:
     """
     # Print a welcome banner
     console.print(Panel.fit(
-        "[bold cyan]ION-upload[/bold cyan] - Upload trace files to ION web app",
+        "[bold cyan]ION-cli[/bold cyan] - The I/O Navigator CLI",
         border_style="cyan"
     ))
     
     parser = argparse.ArgumentParser(
-        description="Upload a .txt file to a public endpoint."
+        description="The I/O Navigator CLI"
     )
     
     parser.add_argument(
