@@ -25,7 +25,7 @@ pip install -e .
 
 Option 1: add your email as an arg for each command
 ```bash
-ion-cli [--user_email, -e] your.email@example.com [other args]
+ion-cli [ --user_email, -e] your.email@example.com [other_args]
 ```
 
 Option 2: Set the `ION_USER_EMAIL` environment variable to avoid specifying your email with each command:
