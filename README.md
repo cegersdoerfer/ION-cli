@@ -5,7 +5,8 @@ A command-line utility for interacting with the ION web application. This tool a
 ## Installation
 
 ```bash
-pip install ion-cli
+cd ion_cli
+pip install -e .
 ```
 
 ## Features
