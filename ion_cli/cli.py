@@ -36,7 +36,7 @@ console = Console(theme=custom_theme)
 
 def validate_file(file_path: str) -> bool:
     """
-    Validate that the file exists and is a .txt file.
+    Validate that the file exists and is either a .txt or .darshan file.
     
     Args:
         file_path: Path to the file to validate
@@ -48,23 +48,36 @@ def validate_file(file_path: str) -> bool:
         console.print(f"[error]Error:[/] File '{file_path}' does not exist.")
         return False
     
-    # Try to detect if the file is actually text
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            # Try to read a small sample of the file
-            sample = file.read(1024)
-            
-            # Check if the sample contains null bytes, which typically indicate binary data
-            if '\0' in sample:
-                console.print(f"[error]Error:[/] File '{file_path}' appears to be a binary file, not a text file.")
-                return False
+    file_extension = os.path.splitext(file_path)[1].lower()
+    
+    # Check if file has valid extension
+    if file_extension not in ['.txt', '.darshan']:
+        console.print(f"[error]Error:[/] File '{file_path}' must be either a .txt or .darshan file.")
+        return False
+    
+    # For .txt files, validate text content
+    if file_extension == '.txt':
+        try:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                # Try to read a small sample of the file
+                sample = file.read(1024)
                 
-    except UnicodeDecodeError:
-        console.print(f"[error]Error:[/] File '{file_path}' contains invalid text encoding.")
-        return False
-    except Exception as e:
-        console.print(f"[error]Error reading file:[/] '{file_path}': {str(e)}")
-        return False
+                # Check if the sample contains null bytes, which typically indicate binary data
+                if '\0' in sample:
+                    console.print(f"[error]Error:[/] File '{file_path}' appears to be a binary file, not a text file.")
+                    return False
+                    
+        except UnicodeDecodeError:
+            console.print(f"[error]Error:[/] File '{file_path}' contains invalid text encoding.")
+            return False
+        except Exception as e:
+            console.print(f"[error]Error reading file:[/] '{file_path}': {str(e)}")
+            return False
+    
+    # For .darshan files, we just verify it exists (already checked above)
+    # You might want to add additional validation for .darshan files if there's
+    # a specific format or header you can check
+    
     
     return True
 
