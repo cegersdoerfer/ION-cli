@@ -23,12 +23,12 @@ pip install -e .
 
 ### Authentication
 
-Before using the CLI, you need to authenticate with 
+Option 1: add your email as an arg for each command
 ```bash
-ion-cli --user_email your.email@example.com
+ion-cli [--user_email, -e] your.email@example.com [other args]
 ```
 
-You can also set the `ION_USER_EMAIL` environment variable to avoid specifying your email with each command:
+Option 2: Set the `ION_USER_EMAIL` environment variable to avoid specifying your email with each command:
 
 ```bash
 export ION_USER_EMAIL=test@example.com
