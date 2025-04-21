@@ -10,7 +10,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "ION-cli=ion_cli.cli:main",
+            "ion-cli=ion_cli.cli:main",
         ],
     },
     author="Chris Egersdoerfer",
