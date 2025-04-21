@@ -79,6 +79,8 @@ Available models:
 - anthropic/claude-3-5-sonnet-20240620
 - openai/gpt-4o
 - openai/gpt-4o-mini
+- openai/gpt-4.1
+- openai/gpt-4.1-mini
 
 
 ### Stopping an Analysis
