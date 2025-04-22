@@ -77,7 +77,7 @@ def validate_file(file_path: str) -> bool:
     # For .darshan files, we just verify it exists (already checked above)
     # You might want to add additional validation for .darshan files if there's
     # a specific format or header you can check
-    
+
     
     return True
 
@@ -394,7 +394,7 @@ def launch_analysis(trace_id: str, user_id: str, llm: str) -> bool:
         return False
     
 
-def view_trace_diagnosis(trace_name: str, user_id: str) -> bool:
+def view_trace_diagnosis(trace_name: str, user_id: str, verbose: bool = False) -> bool:
     """
     View the final diagnosis for a specific trace.
     
@@ -447,7 +447,7 @@ def view_trace_diagnosis(trace_name: str, user_id: str) -> bool:
             ))
             
             # Display sources if available
-            if sources:
+            if verbose and sources:
                 from rich.table import Table
                 from rich.markdown import Markdown
                 source_table = Table(title="Sources", show_lines=True)
@@ -698,6 +698,12 @@ def main(args: Optional[list] = None) -> int:
         required=False,
         help="View the final diagnosis for a specific trace"
     )
+
+    parser.add_argument(
+        "--verbose", "-b",
+        action="store_true",
+        help="Verbose output"
+    )
     
     parsed_args = parser.parse_args(args)
     
@@ -730,7 +736,7 @@ def main(args: Optional[list] = None) -> int:
         return 0 if success else 1
     
     if parsed_args.view:
-        success = view_trace_diagnosis(parsed_args.view, user_id)
+        success = view_trace_diagnosis(parsed_args.view, user_id, True if parsed_args.verbose else False)
         return 0 if success else 1
         
     # If no action is specified, show help
